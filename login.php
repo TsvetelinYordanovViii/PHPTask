@@ -1,3 +1,8 @@
+<?php
+include "PurePHP/connection.php";
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +19,7 @@
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center h-75">
-        <form class="card d-flex justify-content-center align-items-center" action=<?php echo"test"?> method="post">
+        <form class="card d-flex justify-content-center align-items-center" action="PurePHP/submitRegistration.php" method="post">
             <h1 class="mt-1 mb-5">Login</h1>
             <input class="mb-2 w-75" type="text" name="username" id="username" placeholder="Username" required>
             <input class="mb-2 w-75" type="password" name="password" id="password" placeholder="Password" required>

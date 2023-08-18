@@ -1,18 +1,6 @@
 <?php
+include "PurePHP/connection.php";
 
-$servername = "localhost";
-$username = "root";
-$password = "";
-
-try{
-    $conn = new PDO("mysql:host=$servername; dbname=phpusersdb", $username, $password);
-
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-
-    echo "Connection successful";
-} catch(PDOException $e){
-    echo "Connection failed: " . $e->getMessage();
-}
 ?>
 
 <!DOCTYPE html>
@@ -26,7 +14,7 @@ try{
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center h-75">
-        <form class="card d-flex justify-content-center align-items-center" action=<?php echo"test"?> method="post">
+        <form class="card d-flex justify-content-center align-items-center" method="post">
             <h1 class="mt-1 mb-5">Register</h1>
             <input class="mb-2 w-75" type="text" name="username" id="username" placeholder="Username" required>
             <input class="mb-2 w-75" type="email" name="email" id="email" placeholder="Email" required>
