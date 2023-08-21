@@ -6,8 +6,6 @@ submit.addEventListener('click', () => {
     const passwordField = document.querySelector('#password');
     const phoneField = document.querySelector('#phone');
 
-    const registrationForm = document.querySelector('form');
-
     if (!usernameField.checkValidity() || usernameField.value.trim() === '') {
         alert('No username is entered.');
     }
@@ -21,6 +19,6 @@ submit.addEventListener('click', () => {
         alert('The password must be at least 6 characters');
     }
     else {
-        registrationForm.submit();
+        document.querySelector('form').submit();
     }
 })

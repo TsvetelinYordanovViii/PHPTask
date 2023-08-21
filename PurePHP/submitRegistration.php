@@ -1,6 +1,6 @@
 <?php
 
-echo "<script>alert('test')</script>";
+echo "<script>alert('php test 2')<script>";
 
 if (isset($_POST['submit'])){
     echo "yes";
