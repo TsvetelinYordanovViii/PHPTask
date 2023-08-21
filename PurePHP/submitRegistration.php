@@ -7,6 +7,8 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
     $password = $_POST["password"];
     $phone = $_POST["phone"];
 
+    $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
+
     $usernameCheckQuery = "SELECT * FROM users WHERE username = :checkedusername";
     $usernameCheck = $conn->prepare($usernameCheckQuery);
     $usernameCheck->bindParam(':checkedusername', $username);
