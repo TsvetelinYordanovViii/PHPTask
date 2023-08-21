@@ -14,15 +14,28 @@ session_start();
 <body>
 <div class="container d-flex justify-content-center align-items-center h-75">
         <div class="card w-50 p-5 d-flex justify-content-center align-items-center">
-            <div class="mb-4 w-100 d-flex justify-content-between align-items-center">
-                Name: <?php echo $_SESSION["username"]?> <button class="btn btn-info">Change</button>
-            </div>
-            <div class="mb-4 w-100 d-flex justify-content-between align-items-center">
-                Email: <?php echo $_SESSION["email"]?> <button class="btn btn-info">Change</button>
-            </div>
-            <div class="mb-4 w-100 d-flex justify-content-between align-items-center">
-                Phone Number: <?php echo $_SESSION["phoneNumber"]?> <button class="btn btn-info">Change</button>
-            </div>
+            <form class="mb-4 w-100 d-flex justify-content-between align-items-center" method="post">
+                <div class="w-25">
+                    Username: 
+                </div>
+                
+                <input class="data-field me-5" type="text" value="<?php echo $_SESSION["username"]?>">
+                <input class="submit-change-btn btn btn-info" type="button" value="Change">
+            </form>
+            <form class="mb-4 w-100 d-flex justify-content-between align-items-center" method="post">
+                <div class="w-25">
+                    Email: 
+                </div>
+                <input class="data-field me-5" type="email" value="<?php echo $_SESSION["email"]?>">
+                <input class="submit-change-btn btn btn-info" type="button"value="Change">
+            </form>
+            <form class="mb-4 w-100 d-flex justify-content-between align-items-center" method="post">
+                <div class="w-25">
+                    Phone Number: 
+                </div>
+                <input class="data-field me-5" type="text" value="<?php echo $_SESSION["phoneNumber"]?>">
+                <input class="submit-change-btn btn btn-info" type="button" value="Change">
+            </form>
             <div class="mb-4 w-100 d-flex justify-content-center align-items-center">
                 <button class="btn btn-info">Change Password</button>
             </div>
