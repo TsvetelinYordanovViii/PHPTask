@@ -1,10 +1,10 @@
-const submitBtn = document.querySelector('#submit-btn');
+const submitBtn = document.querySelector('#submit-registration-btn');
 
 submitBtn.addEventListener('click', () => {
-    const usernameField = document.querySelector('#username');
-    const emailField = document.querySelector('#email');
-    const passwordField = document.querySelector('#password');
-    const phoneField = document.querySelector('#phone');
+    const usernameField = document.querySelector('#registration-username');
+    const emailField = document.querySelector('#registration-email');
+    const passwordField = document.querySelector('#registration-password');
+    const phoneField = document.querySelector('#registration-phone');
 
     if (!usernameField.checkValidity() || usernameField.value.trim() === '') {
         alert('No username is entered.');

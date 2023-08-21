@@ -4,11 +4,11 @@ include "connection.php";
 $message;
 $links;
 
-if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["phone"])){
-    $username = $_POST["username"];
-    $email = $_POST["email"];
-    $password = $_POST["password"];
-    $phone = $_POST["phone"];
+if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]) && isset($_POST["registration-password"]) && isset($_POST["registration-phone"])){
+    $username = $_POST["registration-username"];
+    $email = $_POST["registration-email"];
+    $password = $_POST["registration-password"];
+    $phone = $_POST["registration-phone"];
 
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 

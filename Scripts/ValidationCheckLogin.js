@@ -1,8 +1,8 @@
-const submitBtn = document.querySelector('#submit-btn');
+const submitBtn = document.querySelector('#submit-login-btn');
 
 submitBtn.addEventListener('click', () => {
-    const emailField = document.querySelector('#email');
-    const passwordField = document.querySelector('#password');
+    const emailField = document.querySelector('#login-email');
+    const passwordField = document.querySelector('#login-password');
 
     if (!emailField.checkValidity()) {
         alert('Email address is invalid.');

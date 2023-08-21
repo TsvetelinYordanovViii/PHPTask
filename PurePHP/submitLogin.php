@@ -4,32 +4,35 @@ include "connection.php";
 $message;
 $links;
 
-if (isset($_POST["email"]) && isset($_POST["password"])){
-    $email = $_POST["email"];
-    $password = $_POST["password"];
+if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
+    $email = $_POST["login-email"];
+    $password = $_POST["login-password"];
 
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
-    $usernameCheckQuery = "
+    $userCheckQuery = "
     SELECT * FROM users
-    WHERE username = :email AND user_password = :user_password
+    WHERE email = :email AND user_password = :user_password
     LIMIT 1
     ";
-    $usernameCheck = $conn->prepare($usernameCheckQuery);
-    $usernameCheck->bindParam(':email', $email);
-    $usernameCheck->bindParam(':user_password', $password);
-    $usernameCheck->execute();
 
-    $usernameCheckResult = $usernameCheck->fetchAll(PDO::FETCH_ASSOC);
+    $userCheck = $conn->prepare($userCheckQuery);
+    $userCheck->bindParam(':email', $email);
+    $userCheck->bindParam(':user_password', $password);
+    $userCheck->execute();
 
-    if (sizeof($usernameCheckResult)==1){
+    $userCheckResult = $userCheck->fetchAll(PDO::FETCH_ASSOC);
+
+    if (sizeof($userCheckResult)==1){
+        $_SESSION["userId"] = $userCheckResult[0]["id"];
+        $_SESSION["username"] = $userCheckResult[0]["username"];
+        $_SESSION["password"] = $userCheckResult[0]["user_password"];
+
+        $username = $_SESSION["username"];
 
         $message = "Login successful, $username.";
         $links = "";
 
-        $_SESSION["userId"] = $usernameCheckResult[0]["id"];
-        $_SESSION["username"] = $usernameCheckResult[0]["username"];
-        $_SESSION["password"] = $usernameCheckResult[0]["user_password"];
     }
     else{
         $message = "Incorrect email or password.";

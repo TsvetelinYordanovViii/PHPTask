@@ -13,11 +13,11 @@ include "PurePHP/connection.php";
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center h-75">
-        <form id="login-form" class="card d-flex justify-content-center align-items-center" action="PurePHP/submitRegistration.php" method="post">
+        <form id="login-form" class="card d-flex justify-content-center align-items-center" action="PurePHP/submitLogin.php" method="post">
             <h1 class="mt-1 mb-5">Login</h1>
-            <input class="mb-2 w-75" type="text" name="email" id="email" placeholder="Email" required>
-            <input class="mb-2 w-75" type="password" name="password" id="password" placeholder="Password" required>
-            <input class="mb-5 w-75 btn bg-info" type="button" id="submit-btn" value="Login">
+            <input class="mb-2 w-75" type="text" name="login-email" id="login-email" placeholder="Email" required>
+            <input class="mb-2 w-75" type="password" name="login-password" id="login-password" placeholder="Password" required>
+            <input class="mb-5 w-75 btn bg-info" type="button" id="submit-login-btn" value="Login">
             <a class="mb-1" href="">Register</a>
         </form>
     </div>
