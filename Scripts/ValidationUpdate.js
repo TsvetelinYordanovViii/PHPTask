@@ -7,12 +7,11 @@ for (let i = 0; i < 3; i++) {
     submitDataEntryBtn[i].addEventListener('click', () => {
         const usernameField = document.querySelector('#registration-username');
 
-        if (!dataFields[fieldIndex].checkValidity() || dataFields[fieldIndex].value.trim() === '') {
-            alert(alertMessages[fieldIndex]);
+        if (!dataFields[i].checkValidity() || dataFields[i].value.trim() === '') {
+            alert(alertMessages[i]);
         }
         else {
-            changeForms.submit();
+            changeForms[i].submit();
         }
-        fieldIndex++;
     });
 }
