@@ -4,41 +4,40 @@ include "connection.php";
 $message;
 $links;
 
-if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["password"]) && isset($_POST["phone"])){
-    $username = $_POST["username"];
+if (isset($_POST["email"]) && isset($_POST["password"])){
     $email = $_POST["email"];
     $password = $_POST["password"];
-    $phone = $_POST["phone"];
 
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
-    $usernameCheckQuery = "SELECT * FROM users WHERE username = :checkedusername";
+    $usernameCheckQuery = "
+    SELECT * FROM users
+    WHERE username = :email AND user_password = :user_password
+    LIMIT 1
+    ";
     $usernameCheck = $conn->prepare($usernameCheckQuery);
-    $usernameCheck->bindParam(':checkedusername', $username);
+    $usernameCheck->bindParam(':email', $email);
+    $usernameCheck->bindParam(':user_password', $password);
     $usernameCheck->execute();
 
-    $checkResult = $usernameCheck->fetchAll(PDO::FETCH_ASSOC);
+    $usernameCheckResult = $usernameCheck->fetchAll(PDO::FETCH_ASSOC);
 
-    if (sizeof($checkResult)==0){
-        $insertionQuery = "INSERT INTO users (username, email, user_password, phone) VALUES (:username, :email, :userpassword, :phone)";
-        $insertion = $conn->prepare($insertionQuery);
-        $insertion->bindParam(':username', $username);
-        $insertion->bindParam(':email', $email);
-        $insertion->bindParam(':userpassword', $password);
-        $insertion->bindParam(':phone', $phone);
+    if (sizeof($usernameCheckResult)==1){
 
-        $insertion->execute();
+        $message = "Login successful, $username.";
+        $links = "";
 
-        $message = "New user successfully registered. You can log in now, $username.";
-        $links = "<a class='text-center mb-1' href='../login.php'>Login</a>";
+        $_SESSION["userId"] = $usernameCheckResult[0]["id"];
+        $_SESSION["username"] = $usernameCheckResult[0]["username"];
+        $_SESSION["password"] = $usernameCheckResult[0]["user_password"];
     }
     else{
-        $message = "Username $username is already used.";
+        $message = "Incorrect email or password.";
         $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
     }
 }
 else{
-    $message = "Invalid user data.";
+    $message = "Incorrect email or password.";
     $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
 }
 
