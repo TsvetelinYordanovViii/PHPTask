@@ -1,6 +1,6 @@
-const submit = document.querySelector('#submit');
+const submitBtn = document.querySelector('#submit-btn');
 
-submit.addEventListener('click', () => {
+submitBtn.addEventListener('click', () => {
     const usernameField = document.querySelector('#username');
     const emailField = document.querySelector('#email');
     const passwordField = document.querySelector('#password');
@@ -19,6 +19,6 @@ submit.addEventListener('click', () => {
         alert('The password must be at least 6 characters');
     }
     else {
-        document.querySelector('form').submit();
+        document.querySelector('#register-form').submit();
     }
 })
