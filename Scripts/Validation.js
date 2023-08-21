@@ -21,7 +21,6 @@ submit.addEventListener('click', () => {
         alert('The password must be at least 6 characters');
     }
     else {
-        alert('test')
         registrationForm.submit();
     }
 })
