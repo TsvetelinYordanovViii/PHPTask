@@ -1,6 +1,5 @@
 <?php
 include "PurePHP/connection.php";
-
 ?>
 
 <!DOCTYPE html>

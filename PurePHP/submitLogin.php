@@ -24,15 +24,18 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
     $userCheckResult = $userCheck->fetchAll(PDO::FETCH_ASSOC);
 
     if (sizeof($userCheckResult)==1){
+        session_start();
+
         $_SESSION["userId"] = $userCheckResult[0]["id"];
         $_SESSION["username"] = $userCheckResult[0]["username"];
+        $_SESSION["email"] = $userCheckResult[0]["email"];
+        $_SESSION["phoneNumber"] = $userCheckResult[0]["phone"];
         $_SESSION["password"] = $userCheckResult[0]["user_password"];
 
         $username = $_SESSION["username"];
 
         $message = "Login successful, $username.";
-        $links = "";
-
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
     }
     else{
         $message = "Incorrect email or password.";
