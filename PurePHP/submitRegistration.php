@@ -29,7 +29,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
         echo "
         <div class='container d-flex justify-content-center align-items-center h-75'>
             <div class='card w-50'>
-                <h2>New user successfully registered. You can log in now, $username.</h2>
+                <h2 class='text-center'>New user successfully registered. You can log in now, $username.</h2>
                 <a class='text-center mb-1' href='../login.php'>Login</a>
             </div>
         </div>
@@ -51,7 +51,7 @@ else{
     echo "
     <div class='container  d-flex justify-content-center align-items-center h-75'>
         <div class='card w-50'>
-            <h2>Invalid user data.</h2>
+            <h2 class='text-center'>Invalid user data.</h2>
             <a class='text-center mb-1' href='../login.php'>Login</a>
             <a class='text-center mb-1' href='../index.php'>Enter valid user information</a>
         </div>

@@ -13,17 +13,17 @@ include "PurePHP/connection.php";
 </head>
 <body>
     <div class="container d-flex justify-content-center align-items-center h-75">
-        <form class="card d-flex justify-content-center align-items-center" action="PurePHP/submitRegistration.php" method="post">
+        <form id="login-form" class="card d-flex justify-content-center align-items-center" action="PurePHP/submitRegistration.php" method="post">
             <h1 class="mt-1 mb-5">Login</h1>
-            <input class="mb-2 w-75" type="text" name="username" id="username" placeholder="Username" required>
+            <input class="mb-2 w-75" type="text" name="email" id="email" placeholder="Email" required>
             <input class="mb-2 w-75" type="password" name="password" id="password" placeholder="Password" required>
-            <input class="mb-5 w-75 btn bg-info" type="button" id="submit" value="Login">
+            <input class="mb-5 w-75 btn bg-info" type="button" id="submit-btn" value="Login">
             <a class="mb-1" href="">Register</a>
         </form>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="Scripts/Validation.js"></script>
+    <script src="Scripts/ValidationCheckLogin.js"></script>
 </body>
 </body>
 </html>
