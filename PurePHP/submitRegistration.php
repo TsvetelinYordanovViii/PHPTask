@@ -15,7 +15,7 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
     $usernameCheck->execute();
 
     $checkResult = $usernameCheck->fetchAll(PDO::FETCH_ASSOC);
-    echo sizeof($checkResult);
+
     if (sizeof($checkResult)==0){
         $insertionQuery = "INSERT INTO users (username, email, user_password, phone) VALUES (:username, :email, :userpassword, :phone)";
         $insertion = $conn->prepare($insertionQuery);
@@ -25,13 +25,51 @@ if (isset($_POST["username"]) && isset($_POST["email"]) && isset($_POST["passwor
         $insertion->bindParam(':phone', $phone);
 
         $insertion->execute();
+
+        echo "
+        <div class='container d-flex justify-content-center align-items-center h-75'>
+            <div class='card w-50'>
+                <h2>New user successfully registered. You can log in now, $username.</h2>
+                <a class='text-center mb-1' href='../login.php'>Login</a>
+            </div>
+        </div>
+        ";
     }
     else{
-        echo "<script>alert('Username is used. Select a different one.');</script>";
+        echo "
+        <div class='container d-flex justify-content-center align-items-center h-75'>
+            <div class='card w-50'>
+                <h2 class='text-center'>Username $username is already used.</h2>
+                <a class='text-center mb-1' href='../login.php'>Login</a>
+                <a class='text-center mb-1' href='../index.php'>Use a different username</a>
+            </div>
+        </div>
+        ";
     }
 }
 else{
-    echo "<script>alert('Invalid registration data.');</script>";
+    echo "
+    <div class='container  d-flex justify-content-center align-items-center h-75'>
+        <div class='card w-50'>
+            <h2>Invalid user data.</h2>
+            <a class='text-center mb-1' href='../login.php'>Login</a>
+            <a class='text-center mb-1' href='../index.php'>Enter valid user information</a>
+        </div>
+    </div>
+    ";
 }
 
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration Result</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+</html>

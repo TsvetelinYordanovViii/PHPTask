@@ -20,7 +20,7 @@ include "PurePHP/connection.php";
             <input class="mb-2 w-75" type="password" name="password" id="password" placeholder="Password" required>
             <input class="mb-3 w-75" type="text" name="phone" id="phone" placeholder="Phone Number" required>
             <input class="mb-5 w-75 btn bg-info" type="button" name="submit-btn" id="submit-btn" value="Register">
-            <a class="mb-1" href="">Login</a>
+            <a class="mb-1" href="login.php">Login</a>
         </form>
     </div>
 
