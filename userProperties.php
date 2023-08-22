@@ -40,7 +40,7 @@ session_start();
                 <input class="submit-change-btn btn btn-info" type="button" value="Change">
             </form>
             <div class="mb-4 w-100 d-flex justify-content-center align-items-center">
-                <button class="btn btn-info">Change Password</button>
+                <button id="change-password" class="btn btn-info">Change Password</button>
             </div>
             <div class="mb-4 w-100 d-flex justify-content-center align-items-center">
                 <a href=''>Logout</a>
@@ -50,5 +50,6 @@ session_start();
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
     <script src="Scripts/ValidationUpdate.js"></script>
+    <script src="Scripts/ChangePasswordBtn.js"></script>
 </body>
 </html>

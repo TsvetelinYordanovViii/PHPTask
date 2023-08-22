@@ -1,0 +1,1 @@
+document.querySelector("#change-password").addEventListener('click', () => window.open("changePassword.php", "_self"))

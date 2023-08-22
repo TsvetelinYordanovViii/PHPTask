@@ -13,17 +13,17 @@ session_start();
 </head>
 <body>
 <div class="container d-flex justify-content-center align-items-center h-75">
-        <div class="card w-50 p-5 d-flex justify-content-center align-items-center">
-            <form class="mb-4 w-100 d-flex justify-content-between align-items-center"
-                action="PurePHP/updateData.php" method="post">
-                <div class="mb-5">
-                    <div class="w-25">
+        <div class="card w-25 p-2 d-flex justify-content-center align-items-center">
+            <form class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
+                action="PurePHP/updatePassword.php" method="post">
+                <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
+                    <div class="w-50">
                         Old Password: 
                     </div>
                     <input class="data-field" type="password" name="old-password" value="">
                 </div>
-                <div class="mb-5">
-                    <div class="w-25">
+                <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
+                    <div class="w-50">
                         New Password: 
                     </div>
                     <input class="data-field" type="password" name="new-password" value="">

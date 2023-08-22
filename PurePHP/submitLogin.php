@@ -30,7 +30,7 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
         $_SESSION["username"] = $userCheckResult[0]["username"];
         $_SESSION["email"] = $userCheckResult[0]["email"];
         $_SESSION["phone"] = $userCheckResult[0]["phone"];
-        $_SESSION["password"] = $userCheckResult[0]["user_password"];
+        $_SESSION["user_password"] = $userCheckResult[0]["user_password"];
 
         $username = $_SESSION["username"];
 

@@ -1,25 +1,44 @@
 <?php
 include "connection.php";
 session_start();
+$message;
 
-if (isset($_POST["old-password"]) && isset($_POST["new-password"]) && $_POST["old-password"]==$_SESSION["user-password"]) {
-    updateDataField($_SESSION["user-password"], $_POST["new-password"], $_SESSION["id"], $conn);
+
+if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
+    $oldPassword = ''.crypt($_POST["old-password"], '$6$rounds=5000$anexamplestringforsalt$');
+    $newPassword = ''.crypt($_POST["new-password"], '$6$rounds=5000$anexamplestringforsalt$');
+
+    if ($oldPassword==$_SESSION["user_password"])
+    updatePasswordField($_SESSION["user_password"], $newPassword, $_SESSION["id"], $conn);
+    else{
+        $message = "Incorrect password.";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
+        echo "
+            <div class='container  d-flex justify-content-center align-items-center h-75'>
+                <div class='card w-50'>
+                    <h2 class='text-center'>$message</h2>
+                    $links
+                </div>
+            </div>
+            ";
+    }
 }
 else{
+    $message = "Invalid password data.";
     $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
     echo "
-    <div class='container  d-flex justify-content-center align-items-center h-75'>
-        <div class='card w-50'>
-            <h2 class='text-center'>Incorrect password.</h2>
-            $links
+        <div class='container  d-flex justify-content-center align-items-center h-75'>
+            <div class='card w-50'>
+                <h2 class='text-center'>$message</h2>
+                $links
+            </div>
         </div>
-    </div>
-    ";
+        ";
 }
+
 
 function updatePasswordField ($oldPassword, $newPassword, $id, $conn){
     $message;
-    $links;
     $username = $_SESSION["username"];
 
         if ($oldPassword != $newPassword ){
@@ -34,17 +53,15 @@ function updatePasswordField ($oldPassword, $newPassword, $id, $conn){
             $update->bindParam(':id', $id);
             $update->execute();
 
-            $_SESSION["user_password"] = $data;
+            $_SESSION["user_password"] = $newPassword;
 
             $message = "Password successfully changed, $username.";
-            $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
         }
         else{
             $message = "Old password matches new password, $username.";
-            $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
         }
 
-        
+    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
     echo "
     <div class='container  d-flex justify-content-center align-items-center h-75'>
         <div class='card w-50'>
