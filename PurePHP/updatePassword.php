@@ -1,7 +1,8 @@
 <?php
 include "connection.php";
-session_start();
 include "sessionCheck.php";
+session_start();
+checkSession("../login.php");
 
 $message;
 

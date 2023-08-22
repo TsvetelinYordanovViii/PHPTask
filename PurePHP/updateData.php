@@ -1,8 +1,8 @@
 <?php
 include "connection.php";
-session_start();
 include "sessionCheck.php";
-//Session check must be included after the session starts, else it will always redirect to the login page.
+session_start();
+checkSession("../login.php");
 
 $fields = ["username", "email", "phone"];
 
