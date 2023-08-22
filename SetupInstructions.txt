@@ -1,0 +1,10 @@
+The website should operate normally as long as all the files are placed in
+the same folder, though that folder must be placed in the path
+*Path to xampp*/htdocs/*folder with website*.
+
+Next xampp must be running and Apache and MySQL must be turned on.
+
+After that in phpMyAdmin, the sql code found in usersDB is executed
+to create the database, used by the website.
+
+That should be all the setup needed. The registration page is index.php

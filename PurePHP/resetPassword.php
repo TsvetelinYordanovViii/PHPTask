@@ -1,6 +1,7 @@
 <?php
 include "connection.php";
 include "resetSessionCheck.php";
+include "messages.php";
 session_start();
 checkResetSession("../login.php");
 
@@ -15,14 +16,7 @@ if (isset($_POST["reset-code"]) && isset($_POST["reset-password"])) {
 else{
     $message = "Invalid reset data.";
     $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Register</a>";
-    echo "
-        <div class='container  d-flex justify-content-center align-items-center h-75'>
-            <div class='card w-50'>
-                <h2 class='text-center'>$message</h2>
-                $links
-            </div>
-        </div>
-        ";
+    showMessage($message, $links);
 }
 session_destroy();
 
@@ -41,14 +35,7 @@ function resetPasswordField($newPassword, $email, $conn){
 
     $message = "Password successfully changed.";
     $links = "<a class='text-center mb-1' href='../login.php'>Login</a>";
-    echo "
-    <div class='container  d-flex justify-content-center align-items-center h-75'>
-        <div class='card w-50'>
-            <h2 class='text-center'>$message</h2>
-            $links
-        </div>
-    </div>
-    ";
+    showMessage($message, $links);
     }
 ?>
 

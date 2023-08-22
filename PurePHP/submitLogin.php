@@ -1,5 +1,6 @@
 <?php
 include "connection.php";
+include "messages.php";
 
 $message;
 $links;
@@ -8,9 +9,11 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
     $email = $_POST["login-email"];
     $password = $_POST["login-password"];
 
+    //Sanitizing the string.
     $email = filter_var($email, FILTER_SANITIZE_STRING);
     $password = filter_var($password, FILTER_SANITIZE_STRING);
 
+    //Encrypting the password.
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
     $userCheckQuery = "
@@ -29,6 +32,7 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
     if (sizeof($userCheckResult)==1){
         session_start();
 
+        //Start a session containing the user's data.
         $_SESSION["id"] = $userCheckResult[0]["id"];
         $_SESSION["username"] = $userCheckResult[0]["username"];
         $_SESSION["email"] = $userCheckResult[0]["email"];
@@ -37,8 +41,9 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
 
         $username = $_SESSION["username"];
 
+        //Message and link variables are used to only write the messages and links without the needing of copying the container's code.
         $message = "Login successful, $username.";
-        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='logout.php'>Logout</a>";
     }
     else{
         $message = "Incorrect email or password.";
@@ -50,15 +55,7 @@ else{
     $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
 }
 
-
-echo "
-<div class='container  d-flex justify-content-center align-items-center h-75'>
-    <div class='card w-50'>
-        <h2 class='text-center'>$message</h2>
-        $links
-    </div>
-</div>
-";
+showMessage($message, $links);
 
 ?>
 

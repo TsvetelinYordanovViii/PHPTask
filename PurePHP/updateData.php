@@ -1,13 +1,13 @@
 <?php
 include "connection.php";
 include "sessionCheck.php";
+include "messages.php";
 session_start();
 checkSession("../login.php");
 
 $fields = ["username", "email", "phone"];
 
-
-for ($i=0; $i < 4; $i++) { 
+for ($i=0; $i < 3; $i++) { 
     //Check if the field is set, then sanitize and check for equality.
     if (isset($_POST[$fields[$i]])) {
         $newData = $_POST[$fields[$i]];
@@ -17,8 +17,17 @@ for ($i=0; $i < 4; $i++) {
             updateDataField($fields[$i], $newData, $_SESSION["id"], $conn);
             break;
         }
+        else{
+            //A message for clicking the change button without changing the set value.
+            $message = "The $fields[$i]'s value wasn't changed. No change committed.";
+            $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='logout.php'>Logout</a>";
+            
+            showMessage($message, $links);
+            break;
+        }
     }
 }
+
 
 function updateDataField ($field, $data, $id, $conn){
         //$field is the only parameter that is added directly into the sql.
@@ -37,15 +46,9 @@ function updateDataField ($field, $data, $id, $conn){
         $_SESSION[$field] = $data;
 
         $message = "The $field is updated successfully.";
-        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
-        echo "
-        <div class='container  d-flex justify-content-center align-items-center h-75'>
-            <div class='card w-50'>
-                <h2 class='text-center'>$message</h2>
-                $links
-            </div>
-        </div>
-        ";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='logout.php'>Logout</a>";
+        
+        showMessage($message, $links);
     }
 ?>
 

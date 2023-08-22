@@ -1,6 +1,7 @@
 <?php
 include "connection.php";
 include "sessionCheck.php";
+include "messages.php";
 session_start();
 checkSession("../login.php");
 
@@ -10,6 +11,7 @@ $message;
 if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
     $oldPassword = filter_var($_POST["old-password"], FILTER_SANITIZE_STRING);
     $newPassword = filter_var($_POST["new-password"], FILTER_SANITIZE_STRING);
+    //Password encryption is required, since the database only stores the encrypted password and can only compare passwords with that.
     $oldPassword = ''.crypt($oldPassword, '$6$rounds=5000$anexamplestringforsalt$');
     $newPassword = ''.crypt($newPassword, '$6$rounds=5000$anexamplestringforsalt$');
 
@@ -17,28 +19,16 @@ if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
     updatePasswordField($_SESSION["user_password"], $newPassword, $_SESSION["id"], $conn);
     else{
         $message = "Incorrect password.";
-        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
-        echo "
-            <div class='container  d-flex justify-content-center align-items-center h-75'>
-                <div class='card w-50'>
-                    <h2 class='text-center'>$message</h2>
-                    $links
-                </div>
-            </div>
-            ";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='logout.php'>Logout</a>";
+        
+        showMessage($message, $links);
     }
 }
 else{
     $message = "Invalid password data.";
-    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
-    echo "
-        <div class='container  d-flex justify-content-center align-items-center h-75'>
-            <div class='card w-50'>
-                <h2 class='text-center'>$message</h2>
-                $links
-            </div>
-        </div>
-        ";
+    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='logout.php'>Logout</a>";
+    
+    showMessage($message, $links);
 }
 
 
@@ -67,14 +57,8 @@ function updatePasswordField ($oldPassword, $newPassword, $id, $conn){
         }
 
     $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
-    echo "
-    <div class='container  d-flex justify-content-center align-items-center h-75'>
-        <div class='card w-50'>
-            <h2 class='text-center'>$message</h2>
-            $links
-        </div>
-    </div>
-    ";
+    
+    showMessage($message, $links);
     }
 ?>
 

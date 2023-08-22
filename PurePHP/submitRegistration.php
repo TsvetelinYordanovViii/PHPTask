@@ -1,15 +1,18 @@
 <?php
 include "connection.php";
+include "messages.php";
 
 $message;
 $links;
 
 if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]) && isset($_POST["registration-password"]) && isset($_POST["registration-phone"])){
+    //Creating variables that have the posted values for convenience.
     $username = $_POST["registration-username"];
     $email = $_POST["registration-email"];
     $password = $_POST["registration-password"];
     $phone = $_POST["registration-phone"];
 
+    //Sanitizing the string.
     $username = filter_var($username, FILTER_SANITIZE_STRING);
     $email = filter_var($email, FILTER_SANITIZE_STRING);
     $password = filter_var($password, FILTER_SANITIZE_STRING);
@@ -25,6 +28,7 @@ if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]
     $checkResult = $emailCheck->fetchAll(PDO::FETCH_ASSOC);
 
     if (sizeof($checkResult)==0){
+        //Inserting successfully registered users into the database using prepared statements and binded paramenters.
         $insertionQuery = "INSERT INTO users (username, email, user_password, phone) VALUES (:username, :email, :userpassword, :phone)";
         $insertion = $conn->prepare($insertionQuery);
         $insertion->bindParam(':username', $username);
@@ -48,14 +52,7 @@ else{
 }
 
 
-echo "
-<div class='container  d-flex justify-content-center align-items-center h-75'>
-    <div class='card w-50'>
-        <h2 class='text-center'>$message</h2>
-        $links
-    </div>
-</div>
-";
+showMessage($message, $links);
 
 ?>
 
