@@ -1,6 +1,8 @@
 <?php
 include "connection.php";
 session_start();
+include "sessionCheck.php";
+
 $message;
 
 
@@ -12,7 +14,7 @@ if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
     updatePasswordField($_SESSION["user_password"], $newPassword, $_SESSION["id"], $conn);
     else{
         $message = "Incorrect password.";
-        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
         echo "
             <div class='container  d-flex justify-content-center align-items-center h-75'>
                 <div class='card w-50'>
@@ -25,7 +27,7 @@ if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
 }
 else{
     $message = "Invalid password data.";
-    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
+    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
     echo "
         <div class='container  d-flex justify-content-center align-items-center h-75'>
             <div class='card w-50'>

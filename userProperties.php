@@ -43,7 +43,7 @@ session_start();
                 <button id="change-password" class="btn btn-info">Change Password</button>
             </div>
             <div class="mb-4 w-100 d-flex justify-content-center align-items-center">
-                <a href=''>Logout</a>
+                <a href="PurePHP/logout.php">Logout</a>
             </div>
         </div>
     </div>

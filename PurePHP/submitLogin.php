@@ -35,7 +35,7 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
         $username = $_SESSION["username"];
 
         $message = "Login successful, $username.";
-        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
     }
     else{
         $message = "Incorrect email or password.";
@@ -43,7 +43,7 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
     }
 }
 else{
-    $message = "Incorrect email or password.";
+    $message = "Invalid data.";
     $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
 }
 

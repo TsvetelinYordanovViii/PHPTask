@@ -1,6 +1,9 @@
 <?php
 include "connection.php";
 session_start();
+include "sessionCheck.php";
+//Session check must be included after the session starts, else it will always redirect to the login page.
+
 $fields = ["username", "email", "phone"];
 
 for ($i=0; $i < 4; $i++) { 
@@ -27,7 +30,7 @@ function updateDataField ($field, $data, $id, $conn){
         $_SESSION[$field] = $data;
 
         $message = "The $field is updated successfully.";
-        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
+        $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
         echo "
         <div class='container  d-flex justify-content-center align-items-center h-75'>
             <div class='card w-50'>
