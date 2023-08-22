@@ -19,6 +19,6 @@ submitBtn.addEventListener('click', () => {
         alert('The password must be at least 6 characters');
     }
     else {
-        document.querySelector('#login-form').submit();
+        document.querySelector('#register-form').submit();
     }
 })

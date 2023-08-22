@@ -6,10 +6,17 @@ checkSession("../login.php");
 
 $fields = ["username", "email", "phone"];
 
+
 for ($i=0; $i < 4; $i++) { 
-    if (isset($_POST[$fields[$i]]) && $_POST[$fields[$i]]!=$_SESSION[$fields[$i]]) {
-        updateDataField($fields[$i], $_POST[$fields[$i]], $_SESSION["id"], $conn);
-        break;
+    //Check if the field is set, then sanitize and check for equality.
+    if (isset($_POST[$fields[$i]])) {
+        $newData = $_POST[$fields[$i]];
+        $newData = filter_var($newData, FILTER_SANITIZE_STRING);
+        if ($newData!=$_SESSION[$fields[$i]])
+        {
+            updateDataField($fields[$i], $newData, $_SESSION["id"], $conn);
+            break;
+        }
     }
 }
 

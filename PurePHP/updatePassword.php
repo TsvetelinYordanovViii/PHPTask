@@ -8,8 +8,10 @@ $message;
 
 
 if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
-    $oldPassword = ''.crypt($_POST["old-password"], '$6$rounds=5000$anexamplestringforsalt$');
-    $newPassword = ''.crypt($_POST["new-password"], '$6$rounds=5000$anexamplestringforsalt$');
+    $oldPassword = filter_var($_POST["old-password"], FILTER_SANITIZE_STRING);
+    $newPassword = filter_var($_POST["new-password"], FILTER_SANITIZE_STRING);
+    $oldPassword = ''.crypt($oldPassword, '$6$rounds=5000$anexamplestringforsalt$');
+    $newPassword = ''.crypt($newPassword, '$6$rounds=5000$anexamplestringforsalt$');
 
     if ($oldPassword==$_SESSION["user_password"])
     updatePasswordField($_SESSION["user_password"], $newPassword, $_SESSION["id"], $conn);

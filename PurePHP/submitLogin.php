@@ -8,6 +8,9 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
     $email = $_POST["login-email"];
     $password = $_POST["login-password"];
 
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
+
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
     $userCheckQuery = "

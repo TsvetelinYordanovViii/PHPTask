@@ -10,6 +10,11 @@ if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]
     $password = $_POST["registration-password"];
     $phone = $_POST["registration-phone"];
 
+    $username = filter_var($username, FILTER_SANITIZE_STRING);
+    $email = filter_var($email, FILTER_SANITIZE_STRING);
+    $password = filter_var($password, FILTER_SANITIZE_STRING);
+    $phone = filter_var($phone, FILTER_SANITIZE_STRING);
+
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
     $emailCheckQuery = "SELECT * FROM users WHERE email = :checkedemail";
