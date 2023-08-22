@@ -14,7 +14,7 @@ include "PurePHP/connection.php";
 <div class="container d-flex justify-content-center align-items-center h-75">
         <div class="card w-25 p-2 d-flex justify-content-center align-items-center">
             <form id="reset-email-form" class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
-                action="PurePHP/updateSession.php" method="post">
+                action="PurePHP/resetSession.php" method="post">
                 <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
                     <div class="w-50">
                         Email: 
