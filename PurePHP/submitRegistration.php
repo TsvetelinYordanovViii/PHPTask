@@ -12,12 +12,12 @@ if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]
 
     $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
-    $usernameCheckQuery = "SELECT * FROM users WHERE username = :checkedusername";
-    $usernameCheck = $conn->prepare($usernameCheckQuery);
-    $usernameCheck->bindParam(':checkedusername', $username);
-    $usernameCheck->execute();
+    $emailCheckQuery = "SELECT * FROM users WHERE email = :checkedemail";
+    $emailCheck = $conn->prepare($emailCheckQuery);
+    $emailCheck->bindParam(':checkedemail', $email);
+    $emailCheck->execute();
 
-    $checkResult = $usernameCheck->fetchAll(PDO::FETCH_ASSOC);
+    $checkResult = $emailCheck->fetchAll(PDO::FETCH_ASSOC);
 
     if (sizeof($checkResult)==0){
         $insertionQuery = "INSERT INTO users (username, email, user_password, phone) VALUES (:username, :email, :userpassword, :phone)";
@@ -33,7 +33,7 @@ if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]
         $links = "<a class='text-center mb-1' href='../login.php'>Login</a>";
     }
     else{
-        $message = "Username $username is already used.";
+        $message = "An account with email $email already exists.";
         $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
     }
 }

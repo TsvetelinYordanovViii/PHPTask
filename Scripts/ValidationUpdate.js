@@ -5,8 +5,6 @@ const alertMessages = ['No username is entered.', 'Email is invalid.', 'No phone
 
 for (let i = 0; i < 3; i++) {
     submitDataEntryBtn[i].addEventListener('click', () => {
-        const usernameField = document.querySelector('#registration-username');
-
         if (!dataFields[i].checkValidity() || dataFields[i].value.trim() === '') {
             alert(alertMessages[i]);
         }
