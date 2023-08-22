@@ -39,12 +39,12 @@ if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]
     }
     else{
         $message = "An account with email $email already exists.";
-        $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
+        $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different email</a>";
     }
 }
 else{
     $message = "Invalid user data.";
-    $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
+    $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Register</a>";
 }
 
 

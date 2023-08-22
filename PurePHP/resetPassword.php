@@ -8,13 +8,13 @@ $message;
 
 if (isset($_POST["reset-code"]) && isset($_POST["reset-password"])) {
     $password = filter_var($_POST["reset-password"], FILTER_SANITIZE_STRING);
-    $password = ''.crypt($newPassword, '$6$rounds=5000$anexamplestringforsalt$');
+    $password = ''.crypt($password, '$6$rounds=5000$anexamplestringforsalt$');
 
     resetPasswordField($password , $_SESSION["reset-email"], $conn);
 }
 else{
     $message = "Invalid reset data.";
-    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href='PurePHP/logout.php'>Logout</a>";
+    $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Register</a>";
     echo "
         <div class='container  d-flex justify-content-center align-items-center h-75'>
             <div class='card w-50'>
@@ -40,7 +40,7 @@ function resetPasswordField($newPassword, $email, $conn){
     $update->execute();
 
     $message = "Password successfully changed.";
-    $links = "<a class='text-center mb-1' href='../userProperties.php'>User Information</a> <a class='text-center mb-1' href=''>Logout</a>";
+    $links = "<a class='text-center mb-1' href='../login.php'>Login</a>";
     echo "
     <div class='container  d-flex justify-content-center align-items-center h-75'>
         <div class='card w-50'>

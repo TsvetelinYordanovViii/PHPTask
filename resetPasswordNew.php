@@ -1,6 +1,6 @@
 <?php
 include "PurePHP/connection.php";
-include "resetSessionCheck.php";
+include "PurePHP/resetSessionCheck.php";
 session_start();
 checkResetSession("login.php");
 ?>
@@ -18,7 +18,7 @@ checkResetSession("login.php");
         <div class="card w-25 p-2 d-flex justify-content-center align-items-center">
             <form id="reset-password-form" class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
                 action="PurePHP/resetPassword.php" method="post">
-                <h2>Here is the reset code: <?php echo "RESET"; ?></h2>
+                <strong class="mb-5">Here is the reset code: <?php echo "RESET"; ?></strong>
                 <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
                     <div class="w-50">
                         Reset Code: 
@@ -37,6 +37,6 @@ checkResetSession("login.php");
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="Scripts/ValidationUpdatePassword.js"></script>
+    <script src="Scripts/ValidationPasswordResetForm.js"></script>
 </body>
 </html>

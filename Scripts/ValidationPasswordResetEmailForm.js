@@ -1,4 +1,4 @@
-const submitBtn = document.querySelector('#reset-email-form');
+const submitBtn = document.querySelector('.submit-change-btn');
 
 submitBtn.addEventListener('click', () => {
     const emailField = document.querySelector('.data-field');
@@ -7,6 +7,6 @@ submitBtn.addEventListener('click', () => {
         alert('Email address is invalid.');
     }
     else {
-        document.querySelector('#login-form').submit();
+        document.querySelector('#reset-email-form').submit();
     }
 })
