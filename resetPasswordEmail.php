@@ -13,8 +13,8 @@ include "PurePHP/connection.php";
 <body>
 <div class="container d-flex justify-content-center align-items-center h-75">
         <div class="card w-25 p-2 d-flex justify-content-center align-items-center">
-            <form class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
-                action="PurePHP/updatePassword.php" method="post">
+            <form id="reset-email-form" class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
+                action="PurePHP/updateSession.php" method="post">
                 <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
                     <div class="w-50">
                         Email: 
@@ -27,6 +27,6 @@ include "PurePHP/connection.php";
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    <script src="Scripts/ValidationUpdatePassword.js"></script>
+    <script src="Scripts/ValidationPasswordResetEmail.js"></script>
 </body>
 </html>

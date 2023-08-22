@@ -18,7 +18,7 @@ include "PurePHP/connection.php";
             <input class="mb-2 w-75" type="password" name="login-password" id="login-password" placeholder="Password" required>
             <input class="mb-5 w-75 btn bg-info" type="button" id="submit-login-btn" value="Login">
             <a class="mb-1" href="index.php">Register</a>
-            <a class="mb-1" href="resetPassword.php">Forgotten password</a>
+            <a class="mb-1" href="resetPasswordEmail.php">Forgotten password</a>
         </form>
     </div>
 

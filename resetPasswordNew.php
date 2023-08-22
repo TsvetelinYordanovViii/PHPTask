@@ -1,5 +1,8 @@
 <?php
 include "PurePHP/connection.php";
+include "resetSessionCheck.php";
+session_start();
+checkResetSession("login.php");
 ?>
 
 <!DOCTYPE html>
@@ -13,8 +16,8 @@ include "PurePHP/connection.php";
 <body>
 <div class="container d-flex justify-content-center align-items-center h-75">
         <div class="card w-25 p-2 d-flex justify-content-center align-items-center">
-            <form class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
-                action="PurePHP/updatePassword.php" method="post">
+            <form id="reset-password-form" class="mb-4 w-100 d-flex justify-content-between align-items-center flex-column"
+                action="PurePHP/resetPassword.php" method="post">
                 <h2>Here is the reset code: <?php echo "RESET"; ?></h2>
                 <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
                     <div class="w-50">
