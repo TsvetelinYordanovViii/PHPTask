@@ -1,8 +1,5 @@
 <?php
 include "PurePHP/connection.php";
-include "PurePHP/sessionCheck.php";
-session_start();
-checkSession("login.php");
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +8,7 @@ checkSession("login.php");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-    <title>Change Password</title>
+    <title>Forgotten Password</title>
 </head>
 <body>
 <div class="container d-flex justify-content-center align-items-center h-75">
@@ -20,17 +17,11 @@ checkSession("login.php");
                 action="PurePHP/updatePassword.php" method="post">
                 <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
                     <div class="w-50">
-                        Old Password: 
+                        Email: 
                     </div>
-                    <input class="data-field" type="password" name="old-password" value="">
+                    <input class="data-field" type="email" name="email" value="">
                 </div>
-                <div class="mb-5 w-100 d-flex justify-content-between align-items-center">
-                    <div class="w-50">
-                        New Password: 
-                    </div>
-                    <input class="data-field" type="password" name="new-password" value="">
-                </div>
-                <input class="submit-change-btn btn btn-info" type="button" value="Change Password">
+                <input class="submit-change-btn btn btn-info" type="button" value="Send Reset Code">
             </form>
         </div>
     </div>
