@@ -1,7 +1,8 @@
 <?php
 include "PurePHP/connection.php";
-session_start();
 include "PurePHP/sessionCheck.php";
+session_start();
+checkSession("login.php");
 ?>
 
 <!DOCTYPE html>
