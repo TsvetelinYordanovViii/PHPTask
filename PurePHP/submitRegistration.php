@@ -42,7 +42,7 @@ if (isset($_POST["registration-username"]) && isset($_POST["registration-email"]
         $links = "<a class='text-center mb-1' href='../login.php'>Login</a>";
     }
     else{
-        $message = "An account with email $email already exists.";
+        $message = "An account with the email $email already exists.";
         $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different email</a>";
     }
 }

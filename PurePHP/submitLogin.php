@@ -47,12 +47,12 @@ if (isset($_POST["login-email"]) && isset($_POST["login-password"])){
     }
     else{
         $message = "Incorrect email or password.";
-        $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
+        $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Register</a>";
     }
 }
 else{
     $message = "Invalid data.";
-    $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Use a different username</a>";
+    $links = "<a class='text-center mb-1' href='../login.php'>Login</a> <a class='text-center mb-1' href='../index.php'>Register</a>";
 }
 
 showMessage($message, $links);
