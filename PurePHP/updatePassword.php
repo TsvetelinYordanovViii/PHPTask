@@ -11,7 +11,7 @@ $message;
 if (isset($_POST["old-password"]) && isset($_POST["new-password"])) {
     $oldPassword = filter_var($_POST["old-password"], FILTER_SANITIZE_STRING);
     $newPassword = filter_var($_POST["new-password"], FILTER_SANITIZE_STRING);
-    //Password encryption is required, since the database only stores the encrypted password and can only compare passwords with that.
+    //Password encryption is required, since the database only stores the encrypted password and we can only compare passwords with that.
     $oldPassword = ''.crypt($oldPassword, '$6$rounds=5000$anexamplestringforsalt$');
     $newPassword = ''.crypt($newPassword, '$6$rounds=5000$anexamplestringforsalt$');
 

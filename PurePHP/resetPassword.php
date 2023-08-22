@@ -22,6 +22,9 @@ session_destroy();
 
 
 function resetPasswordField($newPassword, $email, $conn){
+    // I was thinking whether to include a message in which it says that a user with the given email doesn't exist.
+    // Then I decided against adding this message, though it does lead to the possibility that someone could get 
+    // mislead by the confirmation message when in reality nothing happened. I will do nothing about it.
     $updateQuery = "
     UPDATE users
     SET user_password = :value
